@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head lang="en">
+    <title>内存订单</title>
+    <!--/*/ <th:block th:include="fragments/headerinc :: head"></th:block> /*/-->
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <link href="/css/bootstrap.min.css" rel="stylesheet" media="screen" />
+    <link href="/css/style.css" rel="stylesheet" media="screen" />
+</head>
+<body>
+<script src="/js/jquery-3.4.1.min.js"></script>
+
+<div class="container">
+    <!--/*/ <th:block th:include="fragments/header :: header"></th:block> /*/-->
+<!--    <form name="form" method="post" action="/productPCSubmit2">-->
+        <div align="right" class="times"><span>日期</span>&nbsp;&nbsp;&nbsp;&nbsp;<span id="times"></span></div><br />
+        <div><span class="tittle">＜＜</span><span class="tittleValue">内存订单</span><span class="tittle">＞＞</span></div>
+        <div><br /><div></div>
+            <table width="100%">
+                <tr>
+                    <th width="15%">店名</th>
+                    <th width="15%">产品名</th>
+                    <th width="15%">单价</th>
+                    <th width="15%">库存数</th>
+                    <th width="15%">订单数</th>
+                </tr>
+                <tr th:each = "ram : ${rams}">
+                    <td><input type="text" th:id="${shopId}" th:value = "*{shopName}" disabled="disabled"/></td>
+                    <td><input type="text" id="name" th:id="${ram.name}" th:value = "*{ram.name}" disabled="disabled"/></td>
+                    <td><input type="text" id="price" th:id="${ram.price}" th:value = "*{ram.price}" disabled="disabled"/></td>
+                    <td><input type="text" id="stockNum" th:id="${ram.stockNum}" th:value = "*{ram.stockNum}" disabled="disabled"/></td>
+                    <td><input type="text" class="tableText" id="number" th:id="${ram.id}" autocomplete="off" oninput="value=value.replace(/[^\d]/g,'0').substr(0,1)" maxlength="1" onkeydown="if(event.keyCode==13){event.keyCode=0;event.returnValue=false;}" name="IN_STR[0].IN_ORDER" value="0" /></td>
+                </tr>
+<!--                <input type="text" th:id="${shopId}" class="shop" hidden="hidden" value="0"/>-->
+<!--                                <tr>-->
+<!--                                    <td>渋谷本店  </td>-->
+<!--                                    <input type="hidden" name="IN_STR[0].IN_SHOP" value="渋谷本店  " />-->
+<!--                                    <td>PC-VG16N2Z47   </td>-->
+<!--                                    <input type="hidden" name="IN_STR[0].IN_OBJECT" value="PC-VG16N2Z47   " />-->
+<!--                                    <td class="right">￥113,800</td>-->
+<!--                                    <input type="hidden" name="IN_STR[0].IN_PRICE" value="113800" />-->
+<!--                                    <td class="right">91 </td>-->
+<!--                                    <input type="hidden" id="stock" name="IN_STR[0].IN_STOCK" value="91" />-->
+<!--                                    <td><input type="text" class="tableText" id="number" autocomplete="off" oninput="value=value.replace(/[^\d]/g,'0').substr(0,1)" maxlength="1" onkeydown="if(event.keyCode==13){event.keyCode=0;event.returnValue=false;}" name="IN_STR[0].IN_ORDER" value="0" /></td>-->
+<!--                                </tr>-->
+<!--                                <tr>-->
+<!--                                    <td>渋谷本店  </td>-->
+<!--                                    <input type="hidden" name="IN_STR[1].IN_SHOP" value="渋谷本店  " />-->
+<!--                                    <td>PC-VG24S2Z47   </td>-->
+<!--                                    <input type="hidden" name="IN_STR[1].IN_OBJECT" value="PC-VG24S2Z47   " />-->
+<!--                                    <td class="right">￥209,800</td>-->
+<!--                                    <input type="hidden" name="IN_STR[1].IN_PRICE" value="209800" />-->
+<!--                                    <td class="right">98 </td>-->
+<!--                                    <input type="hidden" id="stock" name="IN_STR[1].IN_STOCK" value="98" />-->
+<!--                                    <td><input type="text" class="tableText" id="number" autocomplete="off" oninput="value=value.replace(/[^\d]/g,'0').substr(0,1)" maxlength="1" onkeydown="if(event.keyCode==13){event.keyCode=0;event.returnValue=false;}" name="IN_STR[1].IN_ORDER" value="0" /></td>-->
+<!--                                </tr>-->
+<!--                                <tr>-->
+<!--                                    <td>渋谷本店  </td>-->
+<!--                                    <input type="hidden" name="IN_STR[2].IN_SHOP" value="渋谷本店  " />-->
+<!--                                    <td>PC-VG20N4Z47   </td>-->
+<!--                                    <input type="hidden" name="IN_STR[2].IN_OBJECT" value="PC-VG20N4Z47   " />-->
+<!--                                    <td class="right">￥140,800</td>-->
+<!--                                    <input type="hidden" name="IN_STR[2].IN_PRICE" value="140800" />-->
+<!--                                    <td class="right">100</td>-->
+<!--                                    <input type="hidden" id="stock" name="IN_STR[2].IN_STOCK" value="100" />-->
+<!--                                    <td><input type="text" class="tableText" id="number" autocomplete="off" oninput="value=value.replace(/[^\d]/g,'0').substr(0,1)" maxlength="1" onkeydown="if(event.keyCode==13){event.keyCode=0;event.returnValue=false;}" name="IN_STR[2].IN_ORDER" value="0" /></td>-->
+<!--                                </tr>-->
+<!--                                <tr>-->
+<!--                                    <td>新宿店    </td>-->
+<!--                                    <input type="hidden" name="IN_STR[3].IN_SHOP" value="新宿店    " />-->
+<!--                                    <td>PC-LG10JLFJB   </td>-->
+<!--                                    <input type="hidden" name="IN_STR[3].IN_OBJECT" value="PC-LG10JLFJB   " />-->
+<!--                                    <td class="right">￥194,800</td>-->
+<!--                                    <input type="hidden" name="IN_STR[3].IN_PRICE" value="194800" />-->
+<!--                                    <td class="right">103</td>-->
+<!--                                    <input type="hidden" id="stock" name="IN_STR[3].IN_STOCK" value="103" />-->
+<!--                                    <td><input type="text" class="tableText" id="number" autocomplete="off" oninput="value=value.replace(/[^\d]/g,'0').substr(0,1)" maxlength="1" onkeydown="if(event.keyCode==13){event.keyCode=0;event.returnValue=false;}" name="IN_STR[3].IN_ORDER" value="0" /></td>-->
+<!--                                </tr>-->
+<!--                                <tr>-->
+<!--                                    <td>新宿店    </td>-->
+<!--                                    <input type="hidden" name="IN_STR[4].IN_SHOP" value="新宿店    " />-->
+<!--                                    <td>PC-LG18SSUJB   </td>-->
+<!--                                    <input type="hidden" name="IN_STR[4].IN_OBJECT" value="PC-LG18SSUJB   " />-->
+<!--                                    <td class="right">￥306,500</td>-->
+<!--                                    <input type="hidden" name="IN_STR[4].IN_PRICE" value="306500" />-->
+<!--                                    <td class="right">105</td>-->
+<!--                                    <input type="hidden" id="stock" name="IN_STR[4].IN_STOCK" value="105" />-->
+<!--                                    <td><input type="text" class="tableText" id="number" autocomplete="off" oninput="value=value.replace(/[^\d]/g,'0').substr(0,1)" maxlength="1" onkeydown="if(event.keyCode==13){event.keyCode=0;event.returnValue=false;}" name="IN_STR[4].IN_ORDER" value="0" /></td>-->
+<!--                                </tr>-->
+            </table>
+            <br /><br />
+            <div><div class="bottomText">下面处理 =>　1：订单确定 2：订单终止<input class="input2" type="text" value="1" autocomplete="off" id="choose" name="number" onkeydown="if(event.keyCode==13){event.keyCode=0;event.returnValue=false;}" /></div><div class="bottomSubmit"><input type="button" id="check" value="送信" /></div></div>
+                        <input type="button" value="Cancel" onclick="document.form.IN_CONTINUE.value='0';document.form.submit();" style="display:none" onkeydown="if(event.keyCode==13){event.keyCode=0;event.returnValue=false;}" />
+                        <input type="submit" value="Next" onclick="next()"/>
+<!--                        <input type="hidden" name="TRNS_NAME" value="0000001" />-->
+<!--                        <input type="hidden" name="IN_TRNM" value="TRNUA2" />-->
+<!--                        <input type="hidden" name="IN_CONTINUE" value="1" />-->
+<!--                        <input type="hidden" name="TRNS_STATUS" value="01" />-->
+        </div>
+<!--    </form>-->
+</div>
+<script type="text/javascript" th:inline="javascript">
+    window.onload = function()
+    {
+        document.getElementById("number").select();
+    }
+    var trLength = $('tr').length-1;
+    for(var i=0;trLength>i;i++){
+        var stock = $('table tr').find('td:eq(3)')[i].innerHTML;
+        if(stock.replace(/\s/g,'')!=""){
+            while(3>stock.replace(/\s/g,'').length){
+                stock="0"+stock.replace(/\s/g,'');
+            }
+        }
+        $('table tr').find('td:eq(3)')[i].innerHTML = stock;
+    }
+    var date = new Date();
+    var yyyy = date.getFullYear();
+    var mm = date.getMonth() + 1;
+    var dd = date.getDate();
+    var yy = yyyy-2018;
+    if(10 > mm){
+        mm = "0" + mm;
+    }
+    if(10 > dd){
+        dd = "0" + dd;
+    }
+    if(10 > yy){
+        yy = "0" + yy;
+    }
+    document.getElementById("times").innerHTML =  yy+"."+mm+"."+dd;
+    $("#check").click(function(){
+        if($("#choose").val() == "2"){
+            $("input[value='Cancel']").click();
+        }else if($("#choose").val() == "1"){
+            $("input[type='submit']").click();
+        }else{
+            $("#choose").val("!");
+        }
+
+        $(".tableText").change(function(){
+            document.getElementById("number").foreach(function(num){
+                if(num != 0){
+                    var obj = num.parent.siblings.childNotes;
+                    $.post("/collect",{"obj":obj},function(data){
+                        alert(data);
+                    },"json");
+                }
+            });
+        })
+    });
+
+
+    $(".tableText").change(function(){
+
+        <!--        document.getElementById("number").foreach(function(num){-->
+        <!--            if(num != 0){-->
+        <!--            var obj = num.parent.siblings.childNotes;-->
+        <!--            $.post("/collect",{"obj":obj},function(data){-->
+        <!--                alert(data);-->
+        <!--            },"json");-->
+        <!--            }-->
+        <!--        });-->
+
+
+        for(var i=0;trLength>i;i++){
+            if($('.tableText')[i].getAttribute('value').length>1){
+                $$('.tableText')[i].value='0';
+            }
+        }
+    })
+
+    function next() {
+        var json = [];
+        // $("#number").each(function (num) {
+        //     if (this.value != 0){
+        //         // alert(this.value)
+        //         var list = num.parent().text().trim();
+        //         json.push(list);
+        //     }
+        // });
+        for(var i=0;trLength>i;i++){
+            var orderNum = $(".tableText")[i].value;
+            if(orderNum > 0){
+                var id = $('.tableText')[i].getAttribute("id");
+                var row = {"id":id,"orderNum":orderNum};
+                json.push(row);
+            }
+        }
+        json = JSON.stringify(json);
+        // var shopId = '[[${shopId}]]';
+        // var shopId = $('.shop')[0].getAttribute("id");
+        // var shopId = $(".shop")[0].getAttribute("id");
+        // alert(json)
+        $.post("/productPCSubmit2",{"json":json},function (data) {
+            alert(data);
+        },"json");
+        location.href = "/transfer2";
+    }
+</script>
+</body>
+</html>

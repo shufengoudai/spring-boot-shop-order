@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+
+<html>
+<head lang="en">
+    <title>パソコン注文</title>
+
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <link href="/css/bootstrap.min.css" rel="stylesheet" media="screen" />
+    <link href="/css/style.css" rel="stylesheet" media="screen" />
+
+</head>
+<script src="/js/jquery-3.4.1.min.js"></script>
+<body>
+
+<div class="container">
+    <form name="form" method="post" action="/TPNUA2">
+        <div align="right" class="times"><span>日付</span>&nbsp;&nbsp;&nbsp;&nbsp;<span id="times"></span></div><br />
+        <div><span class="tittle">＜＜</span><span class="tittleValue">パソコン注文</span><span class="tittle">＞＞</span>
+            <img src="/images/topLine.jpg" /></div>
+        <div><br /><div></div>
+            <table width="100%">
+                <tr>
+                    <th width="25%">営業店名</th>
+                    <th width="30%">製品名</th>
+                    <th width="15%">単価</th>
+                    <th width="15%">在庫数</th>
+                    <th width="15%">注文数</th>
+                </tr>
+                <tr>
+                    <td>渋谷本店  </td>
+                    <input type="hidden" name="IN_STR[0].IN_SHOP" value="渋谷本店  " />
+                    <td>PC-VG16N2Z47   </td>
+                    <input type="hidden" name="IN_STR[0].IN_OBJECT" value="PC-VG16N2Z47   " />
+                    <td class="right">￥113,800</td>
+                    <input type="hidden" name="IN_STR[0].IN_PRICE" value="113800" />
+                    <td class="right">91 </td>
+                    <input type="hidden" id="stock" name="IN_STR[0].IN_STOCK" value="91" />
+                    <td><input type="text" class="tableText" id="number" autocomplete="off" oninput="value=value.replace(/[^\d]/g,'0').substr(0,1)" maxlength="1" onkeydown="if(event.keyCode==13){event.keyCode=0;event.returnValue=false;}" name="IN_STR[0].IN_ORDER" value="0" /></td>
+                </tr>
+                <tr>
+                    <td>渋谷本店  </td>
+                    <input type="hidden" name="IN_STR[1].IN_SHOP" value="渋谷本店  " />
+                    <td>PC-VG24S2Z47   </td>
+                    <input type="hidden" name="IN_STR[1].IN_OBJECT" value="PC-VG24S2Z47   " />
+                    <td class="right">￥209,800</td>
+                    <input type="hidden" name="IN_STR[1].IN_PRICE" value="209800" />
+                    <td class="right">98 </td>
+                    <input type="hidden" id="stock" name="IN_STR[1].IN_STOCK" value="98" />
+                    <td><input type="text" class="tableText" id="number" autocomplete="off" oninput="value=value.replace(/[^\d]/g,'0').substr(0,1)" maxlength="1" onkeydown="if(event.keyCode==13){event.keyCode=0;event.returnValue=false;}" name="IN_STR[1].IN_ORDER" value="0" /></td>
+                </tr>
+                <tr>
+                    <td>渋谷本店  </td>
+                    <input type="hidden" name="IN_STR[2].IN_SHOP" value="渋谷本店  " />
+                    <td>PC-VG20N4Z47   </td>
+                    <input type="hidden" name="IN_STR[2].IN_OBJECT" value="PC-VG20N4Z47   " />
+                    <td class="right">￥140,800</td>
+                    <input type="hidden" name="IN_STR[2].IN_PRICE" value="140800" />
+                    <td class="right">100</td>
+                    <input type="hidden" id="stock" name="IN_STR[2].IN_STOCK" value="100" />
+                    <td><input type="text" class="tableText" id="number" autocomplete="off" oninput="value=value.replace(/[^\d]/g,'0').substr(0,1)" maxlength="1" onkeydown="if(event.keyCode==13){event.keyCode=0;event.returnValue=false;}" name="IN_STR[2].IN_ORDER" value="0" /></td>
+                </tr>
+                <tr>
+                    <td>新宿店    </td>
+                    <input type="hidden" name="IN_STR[3].IN_SHOP" value="新宿店    " />
+                    <td>PC-LG10JLFJB   </td>
+                    <input type="hidden" name="IN_STR[3].IN_OBJECT" value="PC-LG10JLFJB   " />
+                    <td class="right">￥194,800</td>
+                    <input type="hidden" name="IN_STR[3].IN_PRICE" value="194800" />
+                    <td class="right">103</td>
+                    <input type="hidden" id="stock" name="IN_STR[3].IN_STOCK" value="103" />
+                    <td><input type="text" class="tableText" id="number" autocomplete="off" oninput="value=value.replace(/[^\d]/g,'0').substr(0,1)" maxlength="1" onkeydown="if(event.keyCode==13){event.keyCode=0;event.returnValue=false;}" name="IN_STR[3].IN_ORDER" value="0" /></td>
+                </tr>
+                <tr>
+                    <td>新宿店    </td>
+                    <input type="hidden" name="IN_STR[4].IN_SHOP" value="新宿店    " />
+                    <td>PC-LG18SSUJB   </td>
+                    <input type="hidden" name="IN_STR[4].IN_OBJECT" value="PC-LG18SSUJB   " />
+                    <td class="right">￥306,500</td>
+                    <input type="hidden" name="IN_STR[4].IN_PRICE" value="306500" />
+                    <td class="right">105</td>
+                    <input type="hidden" id="stock" name="IN_STR[4].IN_STOCK" value="105" />
+                    <td><input type="text" class="tableText" id="number" autocomplete="off" oninput="value=value.replace(/[^\d]/g,'0').substr(0,1)" maxlength="1" onkeydown="if(event.keyCode==13){event.keyCode=0;event.returnValue=false;}" name="IN_STR[4].IN_ORDER" value="0" /></td>
+                </tr>
+            </table>
+            <br /><br />
+            <div><div class="bottomText">次処理⇒　１：注文確定 ２：注文中断<input class="input2" type="text" value="1" autocomplete="off" id="choose" name="number" onkeydown="if(event.keyCode==13){event.keyCode=0;event.returnValue=false;}" /></div><div class="bottomSubmit"><input type="button" id="check" value="送信" /></div></div>
+            <input type="button" value="Cancel" onclick="document.form.IN_CONTINUE.value='0';document.form.submit();" style="display:none" onkeydown="if(event.keyCode==13){event.keyCode=0;event.returnValue=false;}" />
+            <input type="submit" value="Next" style="display:none" onkeydown="if(event.keyCode==13){event.keyCode=0;event.returnValue=false;}" />
+            <input type="hidden" name="TRNS_NAME" value="0000001" />
+            <input type="hidden" name="IN_TRNM" value="TRNUA2" />
+            <input type="hidden" name="IN_CONTINUE" value="1" />
+            <input type="hidden" name="TRNS_STATUS" value="01" />
+        </div>
+    </form>
+</div>
+<script type="text/javascript">
+    window.onload = function()
+    {
+        document.getElementById("number").select();
+    }
+    var trLength = $('tr').length-1;
+    for(var i=0;trLength>i;i++){
+      var stock = $('table tr').find('td:eq(3)')[i].innerHTML;
+      if(stock.replace(/\s/g,'')!=""){
+        while(3>stock.replace(/\s/g,'').length){
+          stock="0"+stock.replace(/\s/g,'');
+           }
+        }
+      $('table tr').find('td:eq(3)')[i].innerHTML = stock;
+    }
+    var date = new Date();
+    var yyyy = date.getFullYear();
+    var mm = date.getMonth() + 1;
+    var dd = date.getDate();
+    var yy = yyyy-2018;
+    if(10 > mm){
+      mm = "0" + mm;
+    }
+    if(10 > dd){
+      dd = "0" + dd;
+    }
+    if(10 > yy){
+      yy = "0" + yy;
+    }
+      document.getElementById("times").innerHTML =  yy+"."+mm+"."+dd;
+      $("#check").click(function(){
+          if($("#choose").val() == "2"){
+            $("input[value='Cancel']").click();
+          }else if($("#choose").val() == "1"){
+            $("input[type='submit']").click();
+          }else{
+            $("#choose").val("!");
+          }
+        });
+      $(".tableText").change(function(){
+        for(var i=0;trLength>i;i++){
+        if($('.tableText')[i].getAttribute('value').length>1){
+          $$('.tableText')[i].value='0';
+        }
+      }
+      })
+
+  </script>
+</body>
+</html>

@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head lang="en">
+    <title>パソコン注文業務</title>
+    <!--/*/ <th:block th:include="fragments/headerinc :: head"></th:block> /*/-->
+</head>
+<body>
+<script src="/js/jquery-3.4.1.min.js"></script>
+
+<div class="container">
+    <!--/*/ <th:block th:include="fragments/header :: header"></th:block> /*/-->
+    <div th:if="${not #lists.isEmpty(shops)}">
+        <h2>Shop List</h2>
+        <div align="right" class="times"><span>日付</span>&nbsp;&nbsp;&nbsp;&nbsp;<span id="times"></span></div><br />
+        <div><span class="tittle">＜＜</span><span class="tittleValue">パソコン注文業務</span><span class="tittle">＞＞</span></div>
+        <form method="post" action="/productPC">
+            <table class="table table-striped">
+                <tr>
+                    <th>番号</th>
+                    <th>店名</th>
+                    <th>氏名</th>
+                </tr>
+                <tr th:each="shop : ${shops}">
+                    <td th:text="${shop.id}"><a href="/product/${product.id}">番号</a></td>
+                    <td th:text="${shop.shopName}">店名</td>
+                    <td th:text="${shop.bossLastName}">氏名</td>
+<!--                    <td><a th:href="${ '/product/' + product.id}">View</a></td>-->
+<!--                    <td><a th:href="${'/product/edit/' + product.id}">Edit</a></td>-->
+<!--                    <td><a th:href="${'/product/delete/' + product.id}">Delete</a></td>-->
+                </tr>
+            </table>
+            <div><br /><br />
+                <div class="bottomText">処理される方の番号を入力してください&nbsp;
+                    <input type="text" class="input2" name="number" id="number" autocomplete="off" onkeydown="if(event.keyCode==13){event.keyCode=0;event.returnValue=false;}" />
+                </div><div class="bottomSubmit"><button id="check">送信</button></div>
+            </div>
+        </form>
+    </div>
+    <div>
+        <input type="text" th:text="${message}" disabled="disabled"/>
+    </div>
+</div>
+<script type="text/javascript">
+    window.onload = function()
+    {
+        document.getElementById("number").focus();
+<!--        alert("hello");-->
+    }
+    var date = new Date();
+    var yyyy = date.getFullYear();
+    var mm = date.getMonth() + 1;
+    if(9 > mm){
+        mm = "0" + mm;
+    }
+    var dd = date.getDate();
+    if(10 > dd){
+      dd = "0" + dd;
+    }
+    var compare = yyyy+mm+dd; //string
+    var reiwa = '20190501'; //2019年5月1日より令和
+    var mmdd, yy;
+      if (reiwa >compare){
+          yy = yyyy-1988;
+      } else {
+          yy = yyyy-2018;
+      }
+      if (10 > yy){
+          yy = "0"+yy;
+      }
+      mmdd = "0" + mm+"月"+dd+"日";
+      if (reiwa >compare){
+          document.getElementById("times").innerHTML =  yy+"."+mm+"."+dd; // 平成24年05月09日
+      } else {
+          document.getElementById("times").innerHTML =  yy+"."+mm+"."+dd; // 令和02年05月09日
+      }
+      $("#check").click(function(){
+          if($("#number").val()==""||!"123".match($("#number").val())){
+            $("#number").val("!");
+            event.preventDefault();
+          }
+        });
+  </script>
+</body>
+</html>
